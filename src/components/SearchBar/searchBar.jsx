@@ -35,7 +35,6 @@ const SearchBar = () => {
             },
           },
           ".MuiFilledInput-input": {
-            // padding: '0px',
             padding: "7px 175px 7px 10px",
           },
           ".MuiInputBase-root": {
@@ -73,6 +72,7 @@ const SearchBar = () => {
             },
             ".MuiOutlinedInput-input": {
               padding: "0",
+              cursor: "pointer",
             },
 
             "label[data-shrink=false]+.MuiInputBase-formControl .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input":
