@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
-const BackButton = ({ text, icon, onClick }) => {
+const BackButton = ({ text, icon, onClick, bgColor }) => {
   return (
     <Button
       onClick={onClick}

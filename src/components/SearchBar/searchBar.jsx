@@ -1,7 +1,8 @@
 import { Autocomplete, Box, InputAdornment, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import data from "../../../data.json";
-const SearchBar = ({ onRegionFilter, setFilteredData }) => {
+import theme from "../../MUI/theme";
+const SearchBar = ({ onRegionFilter, setFilteredData, toggleDark }) => {
   const topRegion = [
     { label: "Africa", value: "Africa" },
     { label: "America", value: "America" },
@@ -34,12 +35,14 @@ const SearchBar = ({ onRegionFilter, setFilteredData }) => {
           alignItems: { xs: "flex-start", md: "center" },
           flexDirection: { xs: "column", md: "row" },
           ".MuiInputBase-input": {
+            color: toggleDark ? "#ddd" : "",
             borderRadius: "12px",
             maxWidth: "400px",
             "::placeholder": {
               fontSize: "16px",
               color: "#333",
               fontWeight: "400",
+              color: toggleDark ? theme.palette.primary.white : "",
             },
           },
           ".MuiFilledInput-input": {
@@ -66,10 +69,17 @@ const SearchBar = ({ onRegionFilter, setFilteredData }) => {
           variant="filled"
           placeholder="Search for country..."
           onChange={handleCountrySearch}
+          sx={{
+            backgroundColor: toggleDark
+              ? theme.palette.primary.main
+              : theme.palette.primary.white,
+          }}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <SearchIcon />
+                <SearchIcon
+                  sx={{ color: toggleDark ? theme.palette.primary.white : "" }}
+                />
               </InputAdornment>
             ),
           }}

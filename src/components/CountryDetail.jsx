@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { CountryContext } from "./CreateContext";
 
 const CountryDetail = () => {
-  const { filteredData } = useContext(CountryContext);
+  const { filteredData, toggleDark } = useContext(CountryContext);
   const { code } = useParams();
   const navigate = useNavigate();
   const handleClick = () => {
@@ -39,7 +39,7 @@ const CountryDetail = () => {
         pb: 7,
       }}
     >
-      <BackButton text={"Back"} icon onClick={handleClick} />
+      <BackButton text={"Back"} icon onClick={handleClick} toggleDark />
       <Box
         sx={{
           marginTop: "70px",

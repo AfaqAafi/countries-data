@@ -12,8 +12,9 @@ import { useContext, useState } from "react";
 import SearchBar from "../SearchBar/searchBar";
 import { Link } from "react-router-dom";
 import { CountryContext } from "../CreateContext";
+import theme from "../../MUI/theme";
 
-const CardComponent = () => {
+const CardComponent = ({ toggleDark }) => {
   const { filteredData, setFilteredData } = useContext(CountryContext);
   const handleRegionFilter = (event, selectedRegion) => {
     event.preventDefault();
@@ -39,6 +40,7 @@ const CardComponent = () => {
     >
       <Box sx={{ marginBottom: "30px" }}>
         <SearchBar
+          toggleDark={toggleDark}
           countries={data}
           setFilteredData={setFilteredData}
           filteredData={filteredData}
@@ -68,6 +70,10 @@ const CardComponent = () => {
                 <Card
                   sx={{
                     maxWidth: 300,
+                    backgroundColor: toggleDark
+                      ? theme.palette.primary.main
+                      : theme.palette.primary.white,
+                    color: toggleDark ? theme.palette.primary.white : "",
                     marginInline: { xs: "auto", sm: "none" },
                   }}
                 >
