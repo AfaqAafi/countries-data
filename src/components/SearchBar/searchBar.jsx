@@ -1,15 +1,22 @@
 import { Autocomplete, Box, InputAdornment, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-
-const SearchBar = () => {
-  
+import data from "../../../data.json";
+const SearchBar = ({ onRegionFilter, setFilteredData }) => {
   const topRegion = [
-    { label: "Africa" },
-    { label: "America"},
-    { label: "Asia" },
-    { label: "Europe" },
-    { label: "Oceania"},
+    { label: "Africa", value: "Africa" },
+    { label: "America", value: "America" },
+    { label: "Asia", value: "Asia" },
+    { label: "Europe", value: "Europe" },
+    { label: "Oceania", value: "Oceania" },
   ];
+  const handleCountrySearch = (event) => {
+    const userInput = event.target.value.toLowerCase();
+    const filteredDataItems = data.filter((country) => {
+      return country.name.toLowerCase().includes(userInput);
+    });
+    setFilteredData(filteredDataItems);
+  };
+
   return (
     <Box
       sx={{
@@ -24,7 +31,8 @@ const SearchBar = () => {
         sx={{
           display: "flex",
           justifyContent: "space-between",
-          alignItems: "center",
+          alignItems: { xs: "flex-start", md: "center" },
+          flexDirection: { xs: "column", md: "row" },
           ".MuiInputBase-input": {
             borderRadius: "12px",
             maxWidth: "400px",
@@ -47,12 +55,17 @@ const SearchBar = () => {
           ".MuiFilledInput-underline:after": {
             border: "none !important",
           },
+          ".css-1h51icj-MuiAutocomplete-root .MuiOutlinedInput-root .MuiAutocomplete-input":
+            {
+              padding: "0",
+            },
         }}
       >
         <TextField
           id="filled-basic"
           variant="filled"
           placeholder="Search for country..."
+          onChange={handleCountrySearch}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -63,6 +76,7 @@ const SearchBar = () => {
         />
         <Box
           sx={{
+            marginTop: { xs: "20px", md: "0" },
             minWidth: 170,
             backgroundColor: "white",
             ".MuiInputLabel-root": {
@@ -90,6 +104,9 @@ const SearchBar = () => {
           <Autocomplete
             id="combo-box-demo"
             options={topRegion}
+            onChange={(event, newValue) =>
+              onRegionFilter(event, newValue?.value)
+            }
             renderInput={(params) => (
               <TextField {...params} label="Filter by Region" />
             )}
