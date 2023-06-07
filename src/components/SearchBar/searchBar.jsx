@@ -40,7 +40,6 @@ const SearchBar = ({ onRegionFilter, setFilteredData, toggleDark }) => {
             maxWidth: "400px",
             "::placeholder": {
               fontSize: "16px",
-              color: "#333",
               fontWeight: "400",
               color: toggleDark ? theme.palette.primary.white : "",
             },
@@ -97,6 +96,7 @@ const SearchBar = ({ onRegionFilter, setFilteredData, toggleDark }) => {
             ".MuiOutlinedInput-input": {
               padding: "0",
               cursor: "pointer",
+              color: "black",
             },
 
             "label[data-shrink=false]+.MuiInputBase-formControl .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input":

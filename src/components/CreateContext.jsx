@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import data from "../../../data.json";
+import data from "../../data.json";
 export const CountryContext = createContext();
 
 export const CountryProvider = ({ children }) => {

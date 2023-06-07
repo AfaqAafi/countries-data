@@ -1,11 +1,10 @@
 import { Box } from "@mui/material";
-import Header from "../../countries-app/src/components/Header/Header";
-import theme from "../../countries-app/src/MUI/theme";
+import theme from "./MUI/theme";
 import CardComponent from "./components/card/Card";
 import { Route, Routes } from "react-router-dom";
 import CountryDetail from "./components/CountryDetail";
 import { useState } from "react";
-
+import Header from "./components/Header/Header";
 const App = () => {
   const [toggleDark, settoggleDark] = useState(false);
   return (
